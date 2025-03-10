@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Image (JavaScript)</title>
+  <style>
+    
+    /* กำหนดช่องสีน้ำเงินตามภาพตัวอย่าง */
+    table#photoGrid td {
+      width: 80px;
+      height: 80px;
+      background-color: #1c62c4; 
+      border: 1px solid #fff; 
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer; /* ให้เห็นชัดว่าเซลล์คลิกได้ */
+    }
+    .clickable {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+  </style>
+  <script>
+    // ตัวแปรเก็บรูปที่ “เลือก” ไว้ล่าสุด
+    let currentImageSrc = null;
+    let currentImageName = "";
+
+    // เมื่อคลิกรูปด้านซ้าย ให้เรียกฟังก์ชันนี้
+    function selectImage(imageSrc, imageName) {
+      // เก็บรูปและชื่อ
+      currentImageSrc = imageSrc;
+      currentImageName = imageName;
+      // แสดงชื่อรูปที่เลือกใน <div id="selectedName">
+      document.getElementById('selectedName').textContent = imageName;
+    }
+
+    // เมื่อคลิกในเซลล์ตาราง (พื้นที่สีน้ำเงิน)
+    function placeSelectedImage(cellId) {
+      // ถ้ายังไม่ได้เลือกภาพใด ๆ ไม่ต้องทำอะไร
+      if (!currentImageSrc) return;
+      // แทนที่ภายในเซลล์ด้วย <img>
+      const cell = document.getElementById(cellId);
+      cell.innerHTML = '<img src="' + currentImageSrc + '" width="80" height="80">';
+    }
+
+  </script>
+</head>
+<body>
+
+  <table class="main-table"><tr>
+      <td class="left-col">
+
+        <img src="./Food/ChristmasTree.png" width="60" class="clickable"
+             onclick="selectImage('./Food/ChristmasTree.png','ChristmasTree')"><br>
+        <img src="./Food/Apple.png" width="60" class="clickable"
+             onclick="selectImage('./Food/Apple.png','Apple')"><br>
+        <img src="./Food/Noodle.png" width="60" class="clickable"
+             onclick="selectImage('./Food/Noodle.png','Noodle')"><br>
+        <img src="./Food/HamBurgur.png" width="60" class="clickable"
+             onclick="selectImage('./Food/HamBurgur.png','HamBurgur')"><br>
+        <img src="./Food/bg.png" width="60" class="clickable"
+             onclick="selectImage('./Food/bg.png','bg')"><br><br>
+
+      </td>
+      <td class="right-col">
+        <div style="text-align:center; font-weight:bold; font-size:16px;">Photo</div>
+        <div id="selectedName" style="text-align:center; margin-top:5px; font-size:16px;"></div>
+
+        <table id="photoGrid">
+          <tr>
+            <td id="cell1"  onclick="placeSelectedImage('cell1')"></td>
+            <td id="cell2"  onclick="placeSelectedImage('cell2')"></td>
+            <td id="cell3"  onclick="placeSelectedImage('cell3')"></td>
+            <td id="cell4"  onclick="placeSelectedImage('cell4')"></td>
+          </tr>
+          <tr>
+            <td id="cell5"  onclick="placeSelectedImage('cell5')"></td>
+            <td id="cell6"  onclick="placeSelectedImage('cell6')"></td>
+            <td id="cell7"  onclick="placeSelectedImage('cell7')"></td>
+            <td id="cell8"  onclick="placeSelectedImage('cell8')"></td>
+          </tr>
+          <tr>
+            <td id="cell9"  onclick="placeSelectedImage('cell9')"></td>
+            <td id="cell10" onclick="placeSelectedImage('cell10')"></td>
+            <td id="cell11" onclick="placeSelectedImage('cell11')"></td>
+            <td id="cell12" onclick="placeSelectedImage('cell12')"></td>
+          </tr>
+          <tr>
+            <td id="cell13" onclick="placeSelectedImage('cell13')"></td>
+            <td id="cell14" onclick="placeSelectedImage('cell14')"></td>
+            <td id="cell15" onclick="placeSelectedImage('cell15')"></td>
+            <td id="cell16" onclick="placeSelectedImage('cell16')"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
